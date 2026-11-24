@@ -1,4 +1,31 @@
-const menuButton=document.querySelector('.menu-toggle');const nav=document.querySelector('.nav-links');if(menuButton&&nav){menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'×':'☰';});nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰';}));}
+const menuButton = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+
+if (menuButton && nav) {
+
+    menuButton.addEventListener('click', () => {
+
+        const open = nav.classList.toggle('open');
+
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+
+        menuButton.textContent = open ? '×' : '☰';
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+
+            nav.classList.remove('open');
+
+            menuButton.setAttribute('aria-expanded', 'false');
+            menuButton.setAttribute('aria-label', 'Open navigation');
+
+            menuButton.textContent = '☰';
+        });
+    });
+}
+
 const year=document.querySelector('#year');if(year)year.textContent=new Date().getFullYear();
 const lightbox=document.querySelector('.modal');if(lightbox){const modalImg=lightbox.querySelector('img');document.querySelectorAll('[data-gallery]').forEach(img=>img.addEventListener('click',()=>{lightbox.classList.add('show');modalImg.src=img.src;modalImg.alt=img.alt;lightbox.setAttribute('aria-hidden','false');}));const close=()=>{lightbox.classList.remove('show');lightbox.setAttribute('aria-hidden','true');};lightbox.querySelector('.modal-close').addEventListener('click',close);lightbox.addEventListener('click',e=>{if(e.target===lightbox)close();});document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});}
 const bookingForm=document.querySelector('#booking-form');if(bookingForm){bookingForm.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(bookingForm);const message=`Hello Sky City Luxury Guest House, I'd like to enquire about a stay.%0AName: ${f.get('name')}%0ACheck-in: ${f.get('checkin')}%0ACheck-out: ${f.get('checkout')}%0AGuests: ${f.get('guests')}%0AExtra details: ${f.get('message')||'None'}`;window.open(`https://wa.me/27678621222?text=${encodeURIComponent(message)}`,'_blank');});}

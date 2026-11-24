@@ -99,23 +99,20 @@ button,input,textarea,select{
     cursor:pointer
 }
 
-.nav-links{
-    display:none;
-    list-style:none;
-    margin:0;
-    padding:0
+.nav-links {
+    display: none;
 }
 
-.nav-links .open {
-    display:flex;
-    position:absolute;
-    top:72px;
-    left:0;
-    right:0;
-    flex-direction:column;
-    background:var(--charcoal);
-    padding:.75rem 4%;
-    gap:0
+.nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--charcoal);
+    padding: .75rem 4%;
+    gap: 0;
 }
 
 .nav-links a{
@@ -168,7 +165,7 @@ button,input,textarea,select{
     position: absolute;
     inset: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     z-index: 0;
@@ -247,7 +244,7 @@ button,input,textarea,select{
 }
 
 .card img{
-    height:200px
+    height:230px
 }
 
 .card-body{
@@ -305,7 +302,22 @@ button,input,textarea,select{
     margin:.45rem 0
 }
 
+.gallery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:.6rem
+}
 
+.gallery-grid img{
+    height:190px;
+    cursor:pointer;
+    border-radius:3px
+}
+
+.gallery-grid img:first-child{
+    grid-column:span 2;
+    height:240px
+}
 
 .form{
     display:grid;
